@@ -65,7 +65,7 @@ namespace ViewModel
             command.Parameters.AddWithValue("@email", user.Email);
             command.Parameters.AddWithValue("@bDay", user.Birthday);
             command.Parameters.AddWithValue("@gender", user.Gender);
-            command.Parameters.AddWithValue("@city", user.City);
+            command.Parameters.AddWithValue("@city", user.City.ID);
             command.Parameters.AddWithValue("@isManager", user.IsManager);
             command.Parameters.AddWithValue("@isOperator", user.IsOperator);
             command.Parameters.AddWithValue("@isVolunteer", user.IsVolunteer);
@@ -78,18 +78,18 @@ namespace ViewModel
             LoadParameters(user);
             return ExecuteCRUD();
         }
-        //public int Update(City city)
-        //{
-        //    command.CommandText = "UPDATE TblCity SET CityName = @CityName WHERE ID = @ID";
-        //    LoadParameters(city);
-        //    return ExecuteCRUD();
-        //}
-        //public int Delete(City city)
-        //{
-        //    command.CommandText = "DELETE FROM TblCity WHERE ID =@ID";
-        //    LoadParameters(city);
-        //    return ExecuteCRUD();
-        //}
+        public int Update(User user)
+        {
+            command.CommandText = "UPDATE tblUser SET firstName= @firstName, lastName= @lastName, username= @username, password= @password, email= @email, bDay= @bDay, gender= @gender, city= @city, isManager= @isManager, isOperator= @isOperator, isVolunteer= @isVolunteer  WHERE ID = @ID";
+            LoadParameters(user);
+            return ExecuteCRUD();
+        }
+        public int Delete(User user)
+        {
+            command.CommandText = "DELETE FROM tblUser WHERE ID =@ID";
+            LoadParameters(user);
+            return ExecuteCRUD();
+        }
     }
 }
-}
+

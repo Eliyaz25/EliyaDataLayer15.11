@@ -53,17 +53,17 @@ namespace ViewModel
             LoadParameters(activityType);
             return ExecuteCRUD();
         }
-        //public int Update(City city)
-        //{
-        //    command.CommandText = "UPDATE TblCity SET CityName = @CityName WHERE ID = @ID";
-        //    LoadParameters(city);
-        //    return ExecuteCRUD();
-        //}
-        //public int Delete(City city)
-        //{
-        //    command.CommandText = "DELETE FROM TblCity WHERE ID =@ID";
-        //    LoadParameters(city);
-        //    return ExecuteCRUD();
-        //}
+        public int Update(ActivityType activityType)
+        {
+            command.CommandText = "UPDATE tblActivityType SET type = @type WHERE ID = @ID";
+            LoadParameters(activityType);
+            return ExecuteCRUD();
+        }
+        public int Delete(ActivityType activityType)
+        {
+            command.CommandText = "DELETE FROM tblActivityType WHERE ID =@ID";
+            LoadParameters(activityType);
+            return ExecuteCRUD();
+        }
     }
 }

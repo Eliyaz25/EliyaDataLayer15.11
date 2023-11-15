@@ -69,11 +69,11 @@ namespace ViewModel
             command.Parameters.AddWithValue("@operatorName", activity.OperatorName);
             command.Parameters.AddWithValue("@numVolunteers", activity.NumVolunnteers);
             command.Parameters.AddWithValue("@dateActivity", activity.DateActivity);
-            command.Parameters.AddWithValue("@city", activity.City);
+            command.Parameters.AddWithValue("@city", activity.City.ID);
             command.Parameters.AddWithValue("@location", activity.Location);
             command.Parameters.AddWithValue("@startTime", activity.StartTime);
             command.Parameters.AddWithValue("@endTime", activity.EndTime);
-            command.Parameters.AddWithValue("@type", activity.Type);
+            command.Parameters.AddWithValue("@type", activity.Type.ID);
         }
 
         public int Insert(Activity activity)
@@ -82,17 +82,17 @@ namespace ViewModel
             LoadParameters(activity);
             return ExecuteCRUD();
         }
-        //public int Update(City city)
-        //{
-        //    command.CommandText = "UPDATE tblCity SET cityName = @cityName WHERE ID = @ID";
-        //    LoadParameters(city);
-        //    return ExecuteCRUD();
-        //}
-        //public int Delete(City city)
-        //{
-        //    command.CommandText = "DELETE FROM tblCity WHERE ID =@ID";
-        //    LoadParameters(city);
-        //    return ExecuteCRUD();
-        //}
+        public int Update(Activity activity)
+        {
+            command.CommandText = "UPDATE tblActivity SET activityName= @activityName, managerName= @managerName, operatorName= @operatorName, numVolunteers= @numVolunteers, city= @city, location= @location, startTime= @startTime, endTime= @endTime, type= @type, dateActivity= @dateActivity WHERE ID = @ID";
+            LoadParameters(activity);
+            return ExecuteCRUD();
+        }
+        public int Delete(Activity activity)
+        {
+            command.CommandText = "DELETE FROM tblActivity WHERE ID =@ID";
+            LoadParameters(activity);
+            return ExecuteCRUD();
+        }
     }
 }
