@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace Model
 {
+    [DataContract]
     public class City : BaseEntity
     {
         protected string name;
+
+        [DataMember]
         public string Name
         {
             get { return name; }
@@ -18,6 +22,7 @@ namespace Model
         
     }
 
+    [CollectionDataContract]
     public class CityList : List<City>
     {
         //בנאי ברירת מחדל - אוסף ריק

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ViewModel
 {
-    internal class ActivityDB : BaseDB
+    public class ActivityDB : BaseDB
     {
         protected override BaseEntity CreateModel(BaseEntity entity)
         {
@@ -34,7 +34,7 @@ namespace ViewModel
             return new Activity();
         }
 
-        public ActivityList SelectAll()
+        public ActivityList SelectAllActivty()
         {
             command.CommandText = "SELECT * FROM tblActivity";
             ActivityList list = new ActivityList(ExecuteCommand());
@@ -76,19 +76,19 @@ namespace ViewModel
             command.Parameters.AddWithValue("@type", activity.Type.ID);
         }
 
-        public int Insert(Activity activity)
+        public int InsertActivity(Activity activity)
         {
             command.CommandText = "INSERT INTO tblActivity (activityName, managerName, operatorName, numVolunteer, dateActivity, city, location, startTime, endTime, type) VALUES (@activityName, @managerName, @operatorName, @numVolunteer, @dateActivity, @city, @location, @startTime, @endTime, @type)";
             LoadParameters(activity);
             return ExecuteCRUD();
         }
-        public int Update(Activity activity)
+        public int UpdateActivity(Activity activity)
         {
             command.CommandText = "UPDATE tblActivity SET activityName= @activityName, managerName= @managerName, operatorName= @operatorName, numVolunteers= @numVolunteers, city= @city, location= @location, startTime= @startTime, endTime= @endTime, type= @type, dateActivity= @dateActivity WHERE ID = @ID";
             LoadParameters(activity);
             return ExecuteCRUD();
         }
-        public int Delete(Activity activity)
+        public int DeleteActivity(Activity activity)
         {
             command.CommandText = "DELETE FROM tblActivity WHERE ID =@ID";
             LoadParameters(activity);

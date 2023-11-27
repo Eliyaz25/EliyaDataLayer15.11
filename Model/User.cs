@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace Model
 {
+    [DataContract]
     public class User : BaseEntity
     {
         protected string firstName;
@@ -20,29 +22,46 @@ namespace Model
         protected bool isOperator;
         protected bool isVolunteer;
         protected ActivityList activities;
+
+        [DataMember]
         public string FirstName { get { return firstName; } set { firstName = value; } }
 
+        [DataMember]
         public string LastName { get { return lastName; } set { lastName = value; } }
 
+        [DataMember]
         public string Username { get { return username; } set { username = value; } }
 
+        [DataMember]
         public string Password { get { return password; } set { password = value; } }
 
+        [DataMember]
         public string Email { get { return email; } set { email = value; } }
 
+        [DataMember]
         public DateTime Birthday { get { return bDay; } set { bDay = value; } }
 
+        [DataMember]
         public bool Gender { get { return gender; } set { gender = value; } }
 
+        [DataMember]
         public City City { get { return city; } set { city = value; } }
 
+        [DataMember]
         public bool IsManager { get { return isManager; } set { isManager = value; } }
+
+        [DataMember]
         public bool IsOperator { get { return isOperator; } set { isOperator = value; } }
+
+        [DataMember]
         public bool IsVolunteer { get { return isVolunteer; } set { isVolunteer = value; } }
+
+        [DataMember]
         public ActivityList Activities { get { return activities; } set { activities = value; } }
 
     }
 
+    [CollectionDataContract]
     public class UserList : List<User>
     {
         //בנאי ברירת מחדל - אוסף ריק

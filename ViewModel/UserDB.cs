@@ -37,7 +37,7 @@ namespace ViewModel
         }
 
 
-        public UserList SelectAll()
+        public UserList SelectAllUser()
         {
             command.CommandText = "SELECT * FROM tblUser";
             UserList list = new UserList(ExecuteCommand());
@@ -72,23 +72,32 @@ namespace ViewModel
 
         }
 
-        public int Insert(User user)
+        public int InsertUser(User user)
         {
             command.CommandText = "INSERT INTO tblUser (firstName, lastName, username, password, email, bDay, gender, city, isManager, isOperator, isVolunteer) VALUES (@firstName, @lastName, @username, @password, @email, @bDay, @gender, @city, @isManager, @isOperator, @isVolunteer)";
             LoadParameters(user);
             return ExecuteCRUD();
         }
-        public int Update(User user)
+        public int UpdateUser(User user)
         {
             command.CommandText = "UPDATE tblUser SET firstName= @firstName, lastName= @lastName, username= @username, password= @password, email= @email, bDay= @bDay, gender= @gender, city= @city, isManager= @isManager, isOperator= @isOperator, isVolunteer= @isVolunteer  WHERE ID = @ID";
             LoadParameters(user);
             return ExecuteCRUD();
         }
-        public int Delete(User user)
+        public int DeleteUser(User user)
         {
             command.CommandText = "DELETE FROM tblUser WHERE ID =@ID";
             LoadParameters(user);
             return ExecuteCRUD();
+        }
+
+        public User Login(User user)
+        {
+            command.CommandText = $"SELECT * FROM tblUser WHERE username='{user.Username}' AND [password]='{user.Password}'";
+            UserList list = new UserList(base.ExecuteCommand());
+            if (list.Count == 1)
+                return list[0];
+            return null;
         }
     }
 }

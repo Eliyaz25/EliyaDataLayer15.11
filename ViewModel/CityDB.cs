@@ -23,7 +23,7 @@ namespace ViewModel
         }
 
 
-        public CityList SelectAll()
+        public CityList SelectAllCity()
         {
             command.CommandText = "SELECT * FROM tblCity";
             CityList list = new CityList(ExecuteCommand());
@@ -47,19 +47,19 @@ namespace ViewModel
             command.Parameters.AddWithValue("@ID", city.ID);
         }
 
-        public int Insert(City city)
+        public int InsertCity(City city)
         {
             command.CommandText = "INSERT INTO tblCity (cityName) VALUES (@cityName)";
             LoadParameters(city);
             return ExecuteCRUD();
         }
-        public int Update(City city)
+        public int UpdateCity(City city)
         {
             command.CommandText = "UPDATE tblCity SET cityName = @cityName WHERE ID = @ID";
             LoadParameters(city);
             return ExecuteCRUD();
         }
-        public int Delete(City city)
+        public int DeleteCity(City city)
         {
             command.CommandText = "DELETE FROM tblCity WHERE ID =@ID";
             LoadParameters(city);
