@@ -21,7 +21,7 @@ namespace Model
         protected bool isManager;
         protected bool isOperator;
         protected bool isVolunteer;
-        protected ActivityList activities;
+
 
         [DataMember]
         public string FirstName { get { return firstName; } set { firstName = value; } }
@@ -56,8 +56,6 @@ namespace Model
         [DataMember]
         public bool IsVolunteer { get { return isVolunteer; } set { isVolunteer = value; } }
 
-        [DataMember]
-        public ActivityList Activities { get { return activities; } set { activities = value; } }
 
     }
 
