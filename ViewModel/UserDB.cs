@@ -28,8 +28,6 @@ namespace ViewModel
             user.IsManager = bool.Parse(reader["isManager"].ToString());
             user.IsOperator = bool.Parse(reader["isOperator"].ToString());
             user.IsVolunteer = bool.Parse(reader["isVolunteer"].ToString());
-            ActivityDB activityDB = new ActivityDB();
-            user.Activities = activityDB.SelectByUser(user);
             CityDB cityDB = new CityDB();
             int cityID = int.Parse(reader["city"].ToString());
             user.City = cityDB.SelectById(cityID);

@@ -56,7 +56,6 @@ namespace Model
         [DataMember]
         public bool IsVolunteer { get { return isVolunteer; } set { isVolunteer = value; } }
 
-
     }
 
     [CollectionDataContract]
